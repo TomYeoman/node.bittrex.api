@@ -64,6 +64,11 @@ var NodeBittrexApi = function(options) {
     var o = Object.keys(options),
       i;
     for (i = 0; i < o.length; i++) {
+      // Warn about any undefined options we've passed, to avoid strange errors in further calls
+      if (!options[o[i]]) {
+        console.error("Warning: You've passed " + options[o[i]] + "for the " + opts[o[i]] + "option, is this intended?")
+      }
+
       opts[o[i]] = options[o[i]];
     }
   };
